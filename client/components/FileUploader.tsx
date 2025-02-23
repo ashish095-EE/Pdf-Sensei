@@ -2,14 +2,34 @@
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 
-import {CheckCircleIcon,CircleArrowDown,HammerIcon,RocketIcon,SaveIcon} from "lucide-react"
+import {CircleArrowDown,RocketIcon} from "lucide-react"
+
+
 
 function FileUploader() {
+    
+    
+
+    
+
+    
     const onDrop = useCallback((acceptedFiles:File[]) => {
-        console.log(acceptedFiles);
+        const file = acceptedFiles[0];
+
+        if(file){
+            //await handelUpload
+        }
+        else{
+            //error message and toast
+        }
         // Do something with the files
       }, []);
-      const {getRootProps, getInputProps, isDragActive,isFocused,isDragAccept} = useDropzone({onDrop})
+      const {getRootProps, getInputProps, isDragActive,isFocused,isDragAccept} = useDropzone({
+        onDrop,
+        accept: {'application/pdf': [".pdf"]},
+        multiple: false,
+  
+    })
   return (
     <div className="flex flex-col gap-4 items-center max-2-7xl mx-auto">
 
